@@ -20,7 +20,7 @@ const TodoList = (props: ITodoListProps) => {
       <ul>
         {todo.todoData.map((todoData) => (
           <li key={todoData.id}>
-            <div style={todoData.checked ? none : lineThrough}>
+            <div style={todoData.checked ? styleNone : lineThrough}>
               {todoData.content}
             </div>
             <button
@@ -42,7 +42,7 @@ const lineThrough: CSS.Properties = {
   textDecorationLine: "line-through",
 };
 
-const none: CSS.Properties = {
+const styleNone: CSS.Properties = {
   textDecorationLine: "none",
 };
 

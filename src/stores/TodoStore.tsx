@@ -1,15 +1,16 @@
 import { action, computed, makeObservable, observable } from "mobx";
 
-export interface ITodoData {
+export interface ITodo {
   id: number;
   content: string;
   checked: boolean;
 }
+
 class Todo {
   currentId: number = 100;
 
   @observable
-  todoData: ITodoData[] = [
+  todoData: ITodo[] = [
     { id: 1, content: "test", checked: false },
     { id: 2, content: "test2", checked: false },
     { id: 3, content: "test3", checked: false },
@@ -18,11 +19,6 @@ class Todo {
 
   constructor() {
     makeObservable(this);
-  }
-
-  @computed
-  get todoCount(): number {
-    return this.todoData.length;
   }
 
   @action
@@ -48,6 +44,10 @@ class Todo {
     if (todoIndex !== -1) {
       this.todoData[todoIndex].checked = !this.todoData[todoIndex].checked;
     }
+  }
+
+  @computed get totalCount(): number {
+    return this.todoData.length;
   }
 
   findIndex(id: number): number {
