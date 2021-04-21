@@ -8,7 +8,10 @@ export function Todo(props: ITodoProps) {
   const [content, setContent] = React.useState<string>("");
 
   const addTodo = () => {
-    todo.addTodo(content);
+    if (!!content.trim()) {
+      todo.addTodo(content);
+    }
+
     setContent("");
   };
 
